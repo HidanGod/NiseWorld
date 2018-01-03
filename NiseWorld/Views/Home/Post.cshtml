@@ -116,6 +116,24 @@
                    foreach (Coment l in Model.Coments)
                    {
                     <dt>
+                        пользователь
+                    </dt>
+
+                    <dd>
+                      
+                    @if (Model.UserComents != null)
+                    {
+                        foreach (User l2 in Model.UserComents)
+                        {
+                            if (l2.IdUser == l.IdUser)
+                            {
+                               @Html.DisplayFor(model => l2.Name)
+
+                            }
+                        }
+                    }
+                    </dd>
+                    <dt>
                         Текст
                     </dt>
 

@@ -15,7 +15,7 @@ namespace NiseWorld
         protected void Application_Start()
         {
 
-            Database.SetInitializer(new UserInitializer());
+            //Database.SetInitializer(new UserInitializer());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

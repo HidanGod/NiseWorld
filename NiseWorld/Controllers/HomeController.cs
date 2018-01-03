@@ -52,12 +52,23 @@ namespace NiseWorld.Controllers
             }
             int KolPostUsera = db.Posts.Count(p => p.IdUser == user.IdUser);
             int KolLikeUsera = db.Likes.Count(p => p.IdUser == user.IdUser);
+
             List<Coment> coment = new List<Coment>();
+           
+
             foreach (Coment l in db.Coments.Where(p => p.IdPost == post.IdPost))
             {
                 coment.Add(l);
+               
             }
-
+            List<User> userComents = new List<User>();
+            foreach (Coment l in coment)
+            {
+                foreach (User l2 in db.Users.Where(p => p.IdUser == l.IdUser))
+                {
+                    userComents.Add(l2);
+                }
+            }
             ForPost forPost = new ForPost();
             forPost.IdPost = post.IdPost;
             forPost.Post = post;
@@ -69,6 +80,7 @@ namespace NiseWorld.Controllers
             forPost.Likes = like;
             forPost.Pictures = picture;
             forPost.Coments = coment;
+            forPost.UserComents = userComents;
 
             if (post != null)
             {

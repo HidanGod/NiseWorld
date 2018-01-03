@@ -13,6 +13,7 @@ namespace NiseWorld.Models
         public int IdComent { get; set; }
         public int? IdPost { get; set; }
         public int? IdUser { get; set; }
+        public User user { get; set; }
         public string Text { get; set; }
 
         [Column(TypeName = "DateTime2")]
