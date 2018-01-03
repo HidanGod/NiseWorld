@@ -10,7 +10,7 @@ namespace NiseWorld.Models
     {
         protected override void Seed(DBContext db)
         {
-            Coment h1 = new Coment { Text="111" };
+            Coment h1 = new Coment { Text = "111" };
             Coment h2 = new Coment { Text = "222" };
             Coment h3 = new Coment { Text = "333" };
 

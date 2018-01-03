@@ -9,6 +9,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dd>
+            <div> автор </div>
             <dl class="panel-group">
                 <div>
                     @if (Model.User.ImageData != null)
@@ -52,6 +53,7 @@
                     <div><b>@Model.KolPostUsera </b></div>
                 </dd>
             </dl>
+            <div> пост </div>
             <dl class="panel-group">
                 <dt>
                    Загаловок:
@@ -79,7 +81,7 @@
                 </div>
 
                 <dt>
-                  Текс
+                  Текст
                 </dt>
 
                 <dd>
@@ -104,6 +106,30 @@
                 {
                     <dd>0</dd>
                 }
+            </dl>
+
+            <div> Коменты </div>
+            <dl class="panel-group">
+               @if (Model.Coments != null)
+               {
+
+                   foreach (Coment l in Model.Coments)
+                   {
+                    <dt>
+                        Текст
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => l.Text)
+                    </dd>
+                
+
+                   }
+
+               }
+               
+
+               
             </dl>
     </dl>
 

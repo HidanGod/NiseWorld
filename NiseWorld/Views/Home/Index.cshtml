@@ -24,7 +24,9 @@
 
                 <td></td>
             </tr>
-            @foreach (NiseWorld.Models.Post b in Model)
+            @if (Model != null)
+            { 
+            foreach (NiseWorld.Models.Post b in Model)
             {
                 <tr>
                     <td><p>@b.Сaption</p></td>
@@ -32,6 +34,7 @@
             
                     <td><p><a href="/Home/Post/@b.IdPost">просмотр</a></p></td>
                 </tr>
+            }
             }
         </table>
     </div>

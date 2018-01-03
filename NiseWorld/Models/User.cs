@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NiseWorld.Models
 {
@@ -23,6 +24,7 @@ namespace NiseWorld.Models
         public int Age { get; set; }
         // адрес      
         public string Address { get; set; }
+        [Column(TypeName = "DateTime2")]
         public DateTime Time { get; set; }
 
         public byte[] ImageData { get; set; }

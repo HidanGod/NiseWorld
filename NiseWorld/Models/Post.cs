@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,6 +15,7 @@ namespace NiseWorld.Models
         public string Text { get; set; }
         public int? IdUser { get; set; }    
         public User User { get; set; }
+        [Column(TypeName = "DateTime2")]
         public DateTime Time { get; set; }
         public List<Like> Likes { get; set; }
         public List<Repost> Reposts { get; set; }

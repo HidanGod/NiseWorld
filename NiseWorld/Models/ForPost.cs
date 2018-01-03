@@ -22,5 +22,6 @@ namespace NiseWorld.Models
         public List<Coment> Coments { get; set; }
         public List<User> UserComents { get; set; }
 
+
     }
 }
