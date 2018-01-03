@@ -1,0 +1,48 @@
+﻿
+@model IEnumerable<NiseWorld.Models.User>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
+    <title>Nise World</title>
+</head>
+<body>
+    <div>
+        <h3>список пользователей</h3>
+       
+        <p><a href="/Home">Главная</a></p>
+        <p><a href="/MyPosts">мои посты</a></p>
+        <table>
+            <tr>
+                <td><p>Имя</p></td>
+                <td><p>Отчество</p></td>
+                <td><p>Фамилия</p></td>
+                <td><p>возраст</p></td>
+                <td><p>адрес</p></td>
+             
+                <td></td>
+            </tr>
+            @foreach (NiseWorld.Models.User b in Model)
+            {
+                <tr>
+                    <td><p>@b.Name</p></td>
+                    <td><p>@b.Patronymic</p></td>
+                    <td><p>@b.Surname</p></td>
+                    <td><p>@b.Age</p></td>
+                    <td><p>@b.Address</p></td>
+                    <td><p><a href="/Admin/Edit/@b.IdUser">редактировать</a></p></td>
+                    <td><p><a href="/Admin/Delete/@b.IdUser">Удалить</a></p></td>
+                    <td><p><a href="/Admin/UserDetails/@b.IdUser">просмотр</a></p></td>
+                </tr>
+            }
+        </table>
+        <p><a href="/Admin/CreateUser">Создать</a></p>
+    </div>
+</body>
+</html>

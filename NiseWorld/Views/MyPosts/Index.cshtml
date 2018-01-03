@@ -1,0 +1,41 @@
+﻿@model IEnumerable<NiseWorld.Models.Post>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
+    <title>Nise World</title>
+</head>
+<body>
+    <div>
+        <h3>список постов</h3>
+        <p><a href="/Home">Главная</a></p>
+        <p><a href="/Admin">админка</a></p>
+        <table>
+            <tr>
+                <td><p>загаловок</p></td>
+                <td><p>текст</p></td>
+
+                <td></td>
+            </tr>
+            @foreach (NiseWorld.Models.Post b in Model)
+            {
+                <tr>
+                    <td><p>@b.Сaption</p></td>
+                    <td><p>@b.Text</p></td>
+                    <td><p><a href="/Home/Post/@b.IdPost">Просмотр</a></p></td>
+                    <td><p><a href="/Myposts/EditPost/@b.IdPost">редактировать</a></p></td>
+                    <td><p><a href="/Myposts/Delete/@b.IdPost">Удалить</a></p></td>
+                   
+                </tr>
+            }
+        </table>
+        <p><a href="/Myposts/CreatePost">Создать</a></p>
+    </div>
+</body>
+</html>

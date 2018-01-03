@@ -1,0 +1,113 @@
+﻿@using NiseWorld.Models
+@model ForPost
+@{
+    ViewBag.Title = "Details";
+}
+
+<dl>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <dl class="panel-group">
+                <div>
+                    @if (Model.User.ImageData != null)
+                   {
+                        @Html.Raw("<img style='width:100px; height:80px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.User.ImageData) + "\" />")
+
+                    }
+                    else
+                    {
+                        <div><b>Количетсво: </b>0</div> 
+                    }
+                </div>
+
+                <dt>
+                   Имя:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.Name)
+                </dd>
+                <dt>
+                   Возраст:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.Age)
+                </dd>
+                <dt>
+                    <div><b>Поддержка: </b></div> 
+                </dt>
+
+                <dd>
+                    <div><b>@Model.KolLikeUsera </b></div> 
+                </dd>
+                <dt>
+                    <div><b>Посты: </b></div>
+                </dt>
+
+                <dd>
+                    <div><b>@Model.KolPostUsera </b></div>
+                </dd>
+            </dl>
+            <dl class="panel-group">
+                <dt>
+                   Загаловок:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Post.Сaption)
+                </dd>
+                <div class="display-label"><b>Картинки</b></div>
+                <div>
+                    @if (Model.Pictures != null)
+            {
+                        <div><b>Количетсво</b> @Model.Pictures.Count</div>
+                        foreach (Picture c in Model.Pictures)
+                        {
+
+                            @Html.Raw("<img style='width:100px; height:80px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(c.ImageData) + "\" />")
+                        }
+                    }
+                    else
+                    {
+                        <li><div><b>Количетсво: </b>0</div> </li>
+                    }
+                </div>
+
+                <dt>
+                  Текс
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Post.Text)
+                </dd>
+
+                <dd class="display-label"><b>Лайки</b></dd>
+                @if (Model.Likes != null)
+                {
+                    <dd>@Model.Likes.Count</dd>
+                }
+                else
+                {
+                    <dd>0</dd>
+                }
+                <dd class="display-label"><b>Репост</b></dd>
+                @if (Model.Reposts != null)
+                {
+                    <dd>@Model.Reposts.Count</dd>
+                }
+                else
+                {
+                    <dd>0</dd>
+                }
+            </dl>
+    </dl>
+
+<p>
+   
+    <input type="button" value="Назад" onclick="javascript:history.go(-1);" />
+</p>

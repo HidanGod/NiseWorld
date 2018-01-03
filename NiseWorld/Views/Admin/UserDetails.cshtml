@@ -1,0 +1,128 @@
+﻿@using NiseWorld.Models
+@model ForUserAdmin
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="display-label">
+            <b>Аватар</b>
+        </dt>
+
+        <dd>
+            @if (Model.ImageData == null)
+            {
+                <div class="form-control-static">Нет аватара</div>
+            }
+            else
+            {
+                @Html.Raw("<img style='width:100px; height:80px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(Model.ImageData) + "\" />")
+            }
+           
+        </dd>
+        <dt class="display-label">
+            <b>Имя</b>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="display-label">
+            <b>Отчество</b>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+
+        <dt class="display-label">
+            <b>Фамилия</b>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt class="display-label">
+            <b>Возраст</b>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt class="display-label">
+            <b>Адрес</b>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+    <div class="display-label"><b>Посты</b></div>
+    <ul>
+      @if (Model.Posts != null)
+      {
+          <div><b>Количетсво</b> @Model.Posts.Count</div>
+          foreach (Post c in Model.Posts)
+          {
+
+            <li><b>id: </b>@c.IdPost<b> Загаловок: </b>@c.Сaption<a href="/Home/Post/@c.IdPost">Просмотр</a></li>
+          }
+      }
+      else
+      {
+        <li><div><b>Количетсво: </b>0</div> </li>
+      }
+    </ul>
+    <div class="display-label"><b>Репосты</b></div>
+    <ul>
+        @if (Model.Reposts != null)
+        {
+            <div><b>Количетсво</b> @Model.Reposts.Count</div>
+            foreach (Post c in Model.Reposts)
+            {
+
+                <li><b>id: </b>@c.IdPost<b> Загаловок: </b>@c.Сaption<a href="/Home/Post/@c.IdPost">Просмотр</a></li>
+            }
+        }
+        else
+        {
+            <li><div><b>Количетсво: </b>0</div> </li>
+        }
+    </ul>
+    <div class="display-label"><b>Лайки</b></div>
+    <ul>
+        @if (Model.LikesPost != null)
+        {
+            <div><b>Количетсво</b> @Model.LikesPost.Count</div>
+            foreach (Post c in Model.LikesPost)
+            {
+
+                <li><b>id: </b>@c.IdPost<b> Загаловок: </b>@c.Сaption<a href="/Home/Post/@c.IdPost">Просмотр</a></li>
+            }
+        }
+        else
+        {
+            <li><div><b>Количетсво: </b>0</div> </li>
+        }
+    </ul>
+    <div class="display-label"><b>Роль</b></div>
+    <ul>
+                @if (Model.Roles != null)
+                {
+                    <li>@Model.Roles.role</li>
+                }
+    </ul>
+
+</div>
+
+
+<p>
+    <a type="button" href="/Admin/Edit/@Model.IdUsers">редактировать</a>
+   
+    <input type="button" value="Назад" onclick="javascript:history.go(-1);" />
+</p>
