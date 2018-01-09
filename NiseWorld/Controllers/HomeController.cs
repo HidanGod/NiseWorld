@@ -72,9 +72,9 @@ namespace NiseWorld.Controllers
 
             bool userliked = false;
 
-            foreach (Post l in db.Posts.Where(p => p.IdPost == post.IdPost & p.IdUser == user.IdUser))
+            foreach (Like l in db.Likes.Where(p => p.IdPost == post.IdPost & p.IdUser == user.IdUser))
             {
-                userliked = true;
+                userliked = l.liked;
 
             }
 

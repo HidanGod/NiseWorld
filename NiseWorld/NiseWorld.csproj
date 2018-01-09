@@ -274,7 +274,6 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Repost.cs" />
     <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\TakeLike.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
