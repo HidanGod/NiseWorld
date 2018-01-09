@@ -21,7 +21,7 @@ namespace NiseWorld.Models
         public List<Picture> Pictures { get; set; }
         public List<Coment> Coments { get; set; }
         public List<User> UserComents { get; set; }
-
+        public bool Userliked { get; set; }
 
     }
 }

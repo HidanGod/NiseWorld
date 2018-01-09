@@ -15,7 +15,7 @@ namespace NiseWorld.Controllers
 
         // создаем контекст данных
         DBContext db = new DBContext();
-        private IUserRepository repository;
+      //  private IUserRepository repository;
 
        
     // GET: MyPosts

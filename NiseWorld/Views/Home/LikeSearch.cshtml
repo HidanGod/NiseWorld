@@ -1,0 +1,11 @@
+﻿@model IEnumerable<NiseWorld.Models.ForPost>
+
+<div id="searchresults">
+    <h3>все лаки : @Model.First().Userliked</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Likes</li>
+        }
+    </ul>
+</div>

@@ -69,6 +69,15 @@ namespace NiseWorld.Controllers
                     userComents.Add(l2);
                 }
             }
+
+            bool userliked = false;
+
+            foreach (Post l in db.Posts.Where(p => p.IdPost == post.IdPost & p.IdUser == user.IdUser))
+            {
+                userliked = true;
+
+            }
+
             ForPost forPost = new ForPost();
             forPost.IdPost = post.IdPost;
             forPost.Post = post;
@@ -81,6 +90,7 @@ namespace NiseWorld.Controllers
             forPost.Pictures = picture;
             forPost.Coments = coment;
             forPost.UserComents = userComents;
+            forPost.Userliked = userliked;
 
             if (post != null)
             {
@@ -89,6 +99,33 @@ namespace NiseWorld.Controllers
             return HttpNotFound();
         }
 
+        [HttpPost]
+        public ActionResult Post()
+        {
+            int IdUser = 1;
+            int IdPost = 1;
+            Post post = db.Posts.Find(IdPost);
+            ForPost forPost = new ForPost();
+            foreach (Post l in db.Posts.Where(p => p.IdPost == post.IdPost & p.IdUser == IdUser))
+            {
+                forPost.Userliked = true;
+
+            }
+            List<Like> like = new List<Like>();
+
+            foreach (Like l in db.Likes.Where(p => p.IdPost == post.IdPost))
+            {
+                like.Add(l);
+            }
+            forPost.Likes = like;
+
+           
+            if (forPost != null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(forPost);
+        }
 
         public ActionResult About()
         {
@@ -108,5 +145,9 @@ namespace NiseWorld.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
+
+
     }
 }

@@ -1,0 +1,20 @@
+﻿@using NiseWorld.Models
+@model IEnumerable<Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (Model != null)
+{
+    foreach (NiseWorld.Models.Post b in Model)
+    {
+    <p>
+        @Ajax.ActionLink(@b.Сaption, "LikePost", "Like", new { IdPost = @b.IdPost }, new AjaxOptions { UpdateTargetId = "details-block", HttpMethod = "Post" })
+    </p>
+
+    }
+
+}
+
+<div id="details-block">
+</div>

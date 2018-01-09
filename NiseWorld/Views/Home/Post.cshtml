@@ -88,7 +88,24 @@
                     @Html.DisplayFor(model => model.Post.Text)
                 </dd>
 
-                <dd class="display-label"><b>Лайки</b></dd>
+                <dd class="display-label"><b>Лайки</b>
+             
+               
+                    
+                    <p>
+                        @Ajax.ActionLink(Model.Post.Сaption, "LikePost", "Like", new { IdPost = Model.Post.IdPost }, new AjaxOptions { UpdateTargetId = "details-block", HttpMethod = "Post" })
+                    </p>
+
+
+                    <div id="details-block">
+                    </div>
+
+                   
+
+
+
+
+                </dd>
                 @if (Model.Likes != null)
                 {
                     <dd>@Model.Likes.Count</dd>
