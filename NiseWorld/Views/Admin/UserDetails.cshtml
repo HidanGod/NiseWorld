@@ -63,7 +63,7 @@
 
     </dl>
     <div class="display-label"><b>Посты</b></div>
-    <ul>
+   
       @if (Model.Posts != null)
       {
           <div><b>Количетсво</b> @Model.Posts.Count</div>
@@ -75,11 +75,11 @@
       }
       else
       {
-        <li><div><b>Количетсво: </b>0</div> </li>
+        <div><b>Количетсво: </b>0</div>
       }
-    </ul>
+    
     <div class="display-label"><b>Репосты</b></div>
-    <ul>
+    
         @if (Model.Reposts != null)
         {
             <div><b>Количетсво</b> @Model.Reposts.Count</div>
@@ -91,32 +91,32 @@
         }
         else
         {
-            <li><div><b>Количетсво: </b>0</div> </li>
+            <div><b>Количетсво: </b>0</div> 
         }
-    </ul>
+    
     <div class="display-label"><b>Лайки</b></div>
-    <ul>
+    
         @if (Model.LikesPost != null)
         {
             <div><b>Количетсво</b> @Model.LikesPost.Count</div>
             foreach (Post c in Model.LikesPost)
             {
 
-                <li><b>id: </b>@c.IdPost<b> Загаловок: </b>@c.Сaption<a href="/Home/Post/@c.IdPost">Просмотр</a></li>
+               <b>id: </b>@c.IdPost<b> Загаловок: </b>@c.Сaption<a href="/Home/Post/@c.IdPost">Просмотр</a>
             }
         }
         else
         {
-            <li><div><b>Количетсво: </b>0</div> </li>
+            <div><b>Количетсво: </b>0</div> 
         }
-    </ul>
+    
     <div class="display-label"><b>Роль</b></div>
-    <ul>
+   
                 @if (Model.Roles != null)
                 {
-                    <li>@Model.Roles.role</li>
+                    <div>@Model.Roles.role</div>
                 }
-    </ul>
+ 
 
 </div>
 

@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<dl>
-    <h4>Post</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dd>
-            <div> автор </div>
-            <dl class="panel-group">
-                <div>
+<div>
+   
+    <div class="dl-horizontal">
+        <div >
+            <div > автор </div>
+            <div class="container">
+                <div class="row">
+                <div class="col-xs-12 col-md-12">
                     @if (Model.User.ImageData != null)
                    {
                         @Html.Raw("<img style='width:100px; height:80px;' src=\"data:image/jpeg;base64,"
@@ -20,155 +20,157 @@
                     }
                     else
                     {
-                        <div><b>Количетсво: </b>0</div> 
+                       
                     }
                 </div>
 
-                <dt>
-                   Имя:
-                </dt>
+             
 
-                <dd>
+                <div class="col-xs-6 col-md-6">
+                    <b>Имя: </b>
                     @Html.DisplayFor(model => model.User.Name)
-                </dd>
-                <dt>
-                   Возраст:
-                </dt>
-
-                <dd>
+                </div>
+              
+                <div class="col-xs-6 col-md-6">
+                    <b>Возраст: </b>
                     @Html.DisplayFor(model => model.User.Age)
-                </dd>
-                <dt>
-                    <div><b>Поддержка: </b></div> 
-                </dt>
+                </div>
+              
 
-                <dd>
-                    <div><b>@Model.KolLikeUsera </b></div> 
-                </dd>
-                <dt>
-                    <div><b>Посты: </b></div>
-                </dt>
+                <div class="col-xs-6 col-md-6">
+                         <b>Поддержка: </b>
+                    @Model.KolLikeUsera
+                </div>
+               
 
-                <dd>
-                    <div><b>@Model.KolPostUsera </b></div>
-                </dd>
-            </dl>
+                <div class="col-xs-6 col-md-6">
+                    <b>Посты: </b>
+                    @Model.KolPostUsera
+                </div>
+            </div>
+        </div>
             <div> пост </div>
-            <dl class="panel-group">
-                <dt>
-                   Загаловок:
-                </dt>
-
-                <dd>
+            <div  class="row">
+                <div class="col-xs-12 col-md-12">
+                    <b>Загаловок:</b>
                     @Html.DisplayFor(model => model.Post.Сaption)
-                </dd>
-                <div class="display-label"><b>Картинки</b></div>
-                <div>
-                    @if (Model.Pictures != null)
+                </div>
+                <div class="col-xs-12 col-md-12">
+                    <b>Картинки</b>
+                    <div>
+                        @if (Model.Pictures != null)
             {
-                        <div><b>Количетсво</b> @Model.Pictures.Count</div>
-                        foreach (Picture c in Model.Pictures)
-                        {
+                            <div><b>Количетсво</b> @Model.Pictures.Count</div>
+                            foreach (Picture c in Model.Pictures)
+                            {
 
-                            @Html.Raw("<img style='width:100px; height:80px;' src=\"data:image/jpeg;base64,"
+                                @Html.Raw("<img style='width:100px; height:80px;' src=\"data:image/jpeg;base64,"
                                 + Convert.ToBase64String(c.ImageData) + "\" />")
+                            }
                         }
+                        else
+                        {
+                         
+                        }
+                    </div>
+                </div>
+                
+
+                <div class="col-xs-12 col-md-12">
+                    <b> Текст</b>
+                    @Html.DisplayFor(model => model.Post.Text)
+                </div>
+
+                <div class="col-xs-6 col-md-6">
+                    <b>Лайки</b>           
+                    <p>
+                        @Ajax.ActionLink("Лайк", "LikePost", "Help", new { IdPost = Model.Post.IdPost }, new AjaxOptions { UpdateTargetId = "details-block", HttpMethod = "Post" })
+                    </p>
+                    <div id="details-block">
+
+                        @if (Model != null)
+                        {
+                            <div>все лайки : @Model.Likes.Count</div>
+                            <div>
+                                уже лайкал? @if (Model.Userliked == true)
+                                {<div>да </div>}
+                                else
+                                {<div>нет </div>}
+                            </div>
+                        }
+                    </div>
+
+                </div>
+
+                
+                <div class="col-xs-6 col-md-6">
+                    <b>Репост</b>
+                    @if (Model.Reposts != null)
+                    {
+                        <div>@Model.Reposts.Count</div>
                     }
                     else
                     {
-                        <li><div><b>Количетсво: </b>0</div> </li>
+                        <div>0</div>
                     }
                 </div>
+            </div>
 
-                <dt>
-                  Текст
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Post.Text)
-                </dd>
-
-                <dd class="display-label"><b>Лайки</b>
-             
-               
-                    
-                    <p>
-                        @Ajax.ActionLink(Model.Post.Сaption, "LikePost", "Like", new { IdPost = Model.Post.IdPost }, new AjaxOptions { UpdateTargetId = "details-block", HttpMethod = "Post" })
-                    </p>
-
-
-                    <div id="details-block">
-                    </div>
-
-                   
-
-
-
-
-                </dd>
-                @if (Model.Likes != null)
-                {
-                    <dd>@Model.Likes.Count</dd>
-                }
-                else
-                {
-                    <dd>0</dd>
-                }
-                <dd class="display-label"><b>Репост</b></dd>
-                @if (Model.Reposts != null)
-                {
-                    <dd>@Model.Reposts.Count</dd>
-                }
-                else
-                {
-                    <dd>0</dd>
-                }
-            </dl>
-
-            <div> Коменты </div>
-            <dl class="panel-group">
-               @if (Model.Coments != null)
-               {
-
-                   foreach (Coment l in Model.Coments)
-                   {
-                    <dt>
-                        пользователь
-                    </dt>
-
-                    <dd>
-                      
-                    @if (Model.UserComents != null)
+            <div class="container"> <b>Коменты</b> 
+                <div class="row">
+                  
+              </div>    
+            
+                <div>
+                    @using (Ajax.BeginForm("AddComent", "Help", new AjaxOptions { UpdateTargetId = "results" }))
                     {
-                        foreach (User l2 in Model.UserComents)
-                        {
-                            if (l2.IdUser == l.IdUser)
-                            {
-                               @Html.DisplayFor(model => l2.Name)
+                        <input type="text" name="text" />
+                        <input type="submit" value="Добавить комент" />
+                    }
+                    <div id="results">
 
+                        @if (Model != null)
+                        {
+                            foreach (Coment l in Model.Coments)
+                            {
+                               <div class="col-xs-5 col-md-5">
+                               <b> пользователь</b>
+                               @if (Model.UserComents != null)
+                               {
+                                 foreach (User l2 in Model.UserComents)
+                                  {
+                                    if (l2.IdUser == l.IdUser)
+                                     {
+                                       @Html.DisplayFor(model => l2.Name)
+                                       break;
+                                     }
+                                  }
+                               }
+                                </div>
+                                <div class="col-xs-6 col-md-6">
+                                    <b>Текст</b>
+                                    @Html.DisplayFor(model => l.Text)
+                                </div>
+                                <div class="col-xs-1 col-md-1">
+                                    <p>
+                                        @Ajax.ActionLink("Удалить", "DeleteComent", "Help", new { IdComent = l.IdComent }, new AjaxOptions { UpdateTargetId = "results", HttpMethod = "Post" })
+                                    </p>
+                                </div>
                             }
                         }
-                    }
-                    </dd>
-                    <dt>
-                        Текст
-                    </dt>
 
-                    <dd>
-                        @Html.DisplayFor(model => l.Text)
-                    </dd>
-                
+                    </div>
 
-                   }
+                </div>
+            
+                    
+       </div>
+    </div>
+ </div>
 
-               }
-               
+</div>
+        <p>
 
-               
-            </dl>
-    </dl>
+            <input type="button" value="Назад" onclick="javascript:history.go(-1);" />
+        </p>
 
-<p>
-   
-    <input type="button" value="Назад" onclick="javascript:history.go(-1);" />
-</p>

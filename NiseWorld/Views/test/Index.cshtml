@@ -9,7 +9,7 @@
     foreach (NiseWorld.Models.Post b in Model)
     {
     <p>
-        @Ajax.ActionLink(@b.Сaption, "LikePost", "Like", new { IdPost = @b.IdPost }, new AjaxOptions { UpdateTargetId = "details-block", HttpMethod = "Post" })
+        @Ajax.ActionLink(@b.Сaption, "Details", "test", new { IdPost = @b.IdPost }, new AjaxOptions { UpdateTargetId = "details-block", HttpMethod = "Post" })
     </p>
 
     }
@@ -18,3 +18,5 @@
 
 <div id="details-block">
 </div>
+@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")

@@ -1,0 +1,19 @@
+﻿@model NiseWorld.Models.ForPost
+
+<div id="details-block">
+
+    @if (Model != null)
+    {
+        <div>все лайки : @Model.Likes.Count</div>
+        <div>
+            уже лайкал? @if (Model.Userliked == true)
+            {<div>да </div>}
+            else
+            {<div>нет </div>}
+        </div>
+
+
+    }
+
+</div>
+

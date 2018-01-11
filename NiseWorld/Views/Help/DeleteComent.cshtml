@@ -1,0 +1,46 @@
+﻿@using NiseWorld.Models
+@model ForPost
+
+<div id="results">
+
+    @if (Model != null)
+    {
+        foreach (Coment l in Model.Coments)
+        {
+            <div class="col-xs-5 col-md-5">
+                <b> пользователь</b>
+
+
+                @if (Model.UserComents != null)
+                    {
+                        foreach (User l2 in Model.UserComents)
+                        {
+                            if (l2.IdUser == l.IdUser)
+                            {
+                            @Html.DisplayFor(model => l2.Name)
+                            break;
+                        }
+                    }
+                }
+            </div>
+                <div class="col-xs-6 col-md-6">
+                    <b>Текст</b>
+                    @Html.DisplayFor(model => l.Text)
+
+                </div>
+                <div class="col-xs-1 col-md-1">
+                    <p>
+                        @Ajax.ActionLink("Удалить", "DeleteComent", "Help", new { IdComent = l.IdComent }, new AjaxOptions { UpdateTargetId = "results", HttpMethod = "Post" })
+                    </p>
+
+                </div>
+
+        }
+
+    }
+
+</div>
+
+
+
+
